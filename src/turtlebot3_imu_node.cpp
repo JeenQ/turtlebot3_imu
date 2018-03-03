@@ -11,8 +11,13 @@ void msgCallback(const sensor_msgs::Imu::ConstPtr& msg){
 int main(int argc, char** argv){
     ros::init(argc, argv, "turtlebot3_imu");
     ros::NodeHandle nh;
+    ros::Rate loop_rate(5);
     ros::Subscriber sub = nh.subscribe("/imu", 100, msgCallback);
-    ros::spin();
+    while(true){
+        ros::spinOnce();
+        loop_rate.sleep();
+    }
+    // ros::spin();
 
     return 0;
 }
