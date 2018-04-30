@@ -13,7 +13,7 @@ int main(int argc, char** argv){
     ros::NodeHandle nh;
     ros::Rate loop_rate(5);
     ros::Subscriber sub = nh.subscribe("/imu", 100, msgCallback);
-    while(true){
+    while(ros::ok()){
         ros::spinOnce();
         loop_rate.sleep();
     }
